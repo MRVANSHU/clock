@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time Zone Converter</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    #timeDisplay {
+        font-size: 30px;
+        margin-top: 20px;
+        max-height: 200px;
+        overflow-y: scroll;
+        color: #0e356b;
+        border: 5px solid #333;
+        border-radius: 5px;
+        font-family: bold;
+
+    }
+    button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+
+    }
+    button:hover {
+        background-color: black;
+        color: aliceblue;
+    }
+</style>
+</head>
+<body>
+    <h1>Time Zone Converter</h1>
+    
+    <div>
+        <button onclick="showTime('India')">Show Time (India)</button>
+        <button onclick="showTime('USA')">Show Time (USA)</button>
+        <button onclick="showTime('Spain')">Show Time (Spain)</button>
+        <button onclick="showTime('UAE')">Show Time (UAE)</button>
+    </div>
+    
+    <div id="timeDisplay"></div>
+
+    <script>
+        function showTime(country) {
+            var timeZones = {
+                'India': 'Asia/Kolkata',
+                'USA': 'America/New_York',
+                'Spain': 'Europe/Madrid',
+                'UAE': 'Asia/Dubai'
+            };
+
+            var timeZone = timeZones[country];
+
+            var timeDisplay = document.getElementById('timeDisplay');
+            timeDisplay.innerHTML = '';
+
+            var time = new Date().toLocaleString('en-US', {timeZone: timeZone});
+            timeDisplay.innerHTML += '<p>' + country + ': ' + time + '</p>';
+        }
+    </script>
+</body>
+</html>
